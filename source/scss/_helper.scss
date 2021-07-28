@@ -1,0 +1,49 @@
+pre {
+	font: normal 14/1.5 monospace !important;
+	position: relative;
+	padding: 15px;
+	text-align: left !important;
+	background: #eee;
+	&:before {
+		content: 'debug';
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		display: inline-block;
+		color: #aaa;
+	}
+}
+
+.clearfix {
+	@include clearfix;
+}
+.clear {
+	@include clear;
+}
+
+.fsz12{font-size:12px;}
+.fsz14{font-size:14px;}
+.fsz16{font-size:16px;}
+.fsz18{font-size:18px;}
+
+.tal{text-align:left;}
+.tac{text-align:center;}
+.tar{text-align:right;}
+.taj{text-align:justify;}
+
+.ttu{text-transform:uppercase;}
+.ttl{text-transform:lowercase;}
+
+.fw400{font-weight:400;}
+.fw700{font-weight:700;}
+.fsi{font-style:italic;}
+.fsn{font-style:normal;}
+
+.nop{padding:0!important;}
+.nom{margin:0!important;}
+
+.mt0{margin-top:0!important;}
+.mb0{margin-bottom:0!important;}
+
+.pt0{padding-top:0!important;}
+.pb0{padding-bottom:0!important;}

@@ -1,0 +1,124 @@
+@mixin breakpoint($min: 0, $max: 0) {
+	$type: type-of($min);
+	@if $type == string {
+		@if $min == xs {
+			@media (max-width: 575px) { @content; }
+		}
+		@else if $min == sm {
+			@media (min-width: 576px) { @content; }
+		}
+		@else if $min == md {
+			@media (min-width: 768px) { @content; }
+		}
+		@else if $min == lg {
+			@media (min-width: 992px) { @content; }
+		}
+		@else if $min == xl {
+			@media (min-width: 1200px) { @content; }
+		}
+		@else {
+			@warn "Breakpoint mixin supports: xs, sm, md, lg, xl";
+	}
+	}
+	@else if $type == number {
+		$query: "all" !default;
+		@if $min != 0 and $max != 0 {
+			$query: "(min-width: #{$min}) and (max-width: #{$max})";
+		}
+		@else if $min != 0 and $max == 0 {
+			$query: "(min-width: #{$min})";
+		}
+		@else if $min == 0 and $max != 0 {
+			$query: "(max-width: #{$max})";
+		}
+		@media #{$query} {
+			@content;
+		}
+	}
+}
+
+@mixin arrow-icon ($pos: 'right', $direction: 'right') {
+	@if ($pos == 'right'){
+		&:after {
+			font-family: Arial, Helvetica, sans-serif;
+			@if ($direction == 'right') {
+				content: " \2192";
+			}
+			@else if ($direction == 'left') {
+				content: " \2190";
+			}
+			@else if ($direction == 'top') {
+				content: " \2191";
+			}
+			@else if ($direction == 'bottom') {
+				content: " \2193";
+			}
+		}
+	}
+	@else if ($pos == 'left') {
+		&:before {
+			font-family: Arial, Helvetica, sans-serif;
+			@if ($direction == 'right') {
+				content: " \2192";
+			}
+			@else if ($direction == 'left') {
+				content: " \2190";
+			}
+			@else if ($direction == 'top') {
+				content: " \2191";
+			}
+			@else if ($direction == 'bottom') {
+				content: " \2193";
+			}
+		}
+	}
+}
+
+@mixin clearfix {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin clear {
+	display: block;
+	clear: both;
+	width: 100%;
+}
+
+// используется анимированный svg, не поддерживается IE, Edge, в них просто затемнение
+@mixin preloading(
+	$color: #000,
+	$bg: #fff,
+	$opacity: .5,
+	$size: 50px auto
+) {
+	$color: uri-encode-color($color);
+
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		pointer-events: none;
+		transition: opacity .3s;
+		opacity: 0;
+		background: rgba($bg, $opacity) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 457 60'%3E%3Cg%3E%3Ccircle cx='-31' cy='30' r='30' fill='#{$color}' fill-opacity='1'/%3E%3Ccircle cx='-97' cy='30' r='24' fill='#{$color}' fill-opacity='0.8'/%3E%3Ccircle cx='-163' cy='30' r='19' fill='#{$color}' fill-opacity='0.61'/%3E%3Ccircle cx='-229.5' cy='30.5' r='13.5' fill='#{$color}' fill-opacity='0.22'/%3E%3Ccircle cx='-295' cy='31' r='11' fill='#{$color}' fill-opacity='0.12'/%3E%3CanimateTransform attributeName='transform' calcMode='discrete' dur='1440ms' repeatCount='indefinite' type='translate' values='61 0;127 0;193 0;259 0;325 0;391 0;457 0;523 0;589 0;655 0;721 0;787 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='488' cy='30' r='30' fill='#{$color}' fill-opacity='1'/%3E%3Ccircle cx='554' cy='30' r='24' fill='#{$color}' fill-opacity='0.8'/%3E%3Ccircle cx='620' cy='30' r='19' fill='#{$color}' fill-opacity='0.61'/%3E%3Ccircle cx='686.5' cy='30.5' r='13.5' fill='#{$color}' fill-opacity='0.22'/%3E%3Ccircle cx='753' cy='31' r='11' fill='#{$color}' fill-opacity='0.12'/%3E%3CanimateTransform attributeName='transform' calcMode='discrete' dur='1440ms' repeatCount='indefinite' type='translate' values='0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;0 0;-61 0;-127 0;-193 0;-259 0;-325 0;-391 0;-457 0;-523 0;-589 0;-655 0;-721 0;-787 0;'/%3E%3C/g%3E%3C/svg%3E") 50% / $size no-repeat;
+	}
+
+	&.is-loading {
+		user-select: none;
+
+		&::before {
+			pointer-events: all;
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,109 @@
+/* colorbox */
+
+#cboxOverlay {
+    background: rgba(#000, .6);
+}
+
+#colorbox {
+
+    #cboxLoadedContent,
+    #cboxLoadingOverlay,
+    #cboxLoadingGraphic {
+        padding: 0;
+        background: #fff;
+    }
+
+    #cboxContent {
+        position: static;
+        margin: 24px;
+        background: #fff;
+    }
+
+    #cboxSlideshow {
+        display: none;
+        background: none;
+    }
+
+    #cboxClose,
+    #cboxPrevious,
+    #cboxNext {
+        line-height: 0;
+        position: absolute;
+        z-index: 5;
+        display: flex;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform $transition-params;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #cboxClose {
+        top: 0;
+        right: 0;
+        fill: #000;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
+
+    #cboxPrevious,
+    #cboxNext {
+        top: 50%;
+        margin-top: -12px;
+
+		.icon {
+            transition: transform $transition-params;
+            fill: $fg;
+        }
+
+        &:hover .icon {
+            transform: translateX(5px);
+        }
+    }
+
+    #cboxPrevious {
+        left: 0;
+        transform: rotate(180deg);
+    }
+
+    #cboxNext {
+        right: 0;
+    }
+}
+
+#colorbox.colorbox-message,
+#colorbox.colorbox-form {
+    #cboxLoadedContent {
+        max-width: 400px;
+        background: #fff;
+    }
+}
+
+/* datepicker */
+
+.datepicker,
+.datepicker-inline .datepicker {
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+
+    &--day-name {
+        color: $fg;
+    }
+
+    &--cell {
+        &.-current- {
+            color: $fg;
+        }
+
+        &.-selected-,
+        &.-selected-.-current-,
+        &.-selected-.-focus- {
+            color: $fg;
+            background: $bg;
+        }
+    }
+}

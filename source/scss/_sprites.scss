@@ -1,0 +1,42 @@
+/*
+ * ЭТОТ ФАЙЛ КОМПИЛИРУЕТСЯ АВТОМАТИЧЕСКИ
+ */
+
+.icon {
+	display: inline-block;
+	line-height: 0;
+}
+
+/*
+ * Чтобы изменить размер иконки надо изменить font-size
+ * Ширина иконки равняется font-size 1:1, высота расчитывается пропорционально
+ * Размеры меняются через наследование, этот файл не трогать
+ *
+ * Пример:
+ * // исходная иконка
+ * .icon.icon-example {
+ *     font-size: 10px // width = 10px
+ * }
+ * // измененная иконка
+ * .my-change .icon-example {
+ *     font-size: 20px // width = 20px
+ * }
+ */
+
+.icon.icon-arrow {
+	font-size: 24px;
+	width: 1em;
+	height: 1em;
+}
+
+.icon.icon-checkbox {
+	font-size: 24px;
+	width: 1em;
+	height: 1em;
+}
+
+.icon.icon-close {
+	font-size: 24px;
+	width: 1em;
+	height: 1em;
+}

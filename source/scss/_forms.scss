@@ -1,0 +1,26 @@
+.form {
+    padding: 20px;
+    border: 1px solid $fg;
+
+    &--popup {
+        padding: 30px;
+        border: 0;
+    }
+
+    &__header {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__body {}
+
+    &__footer {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+
+    &__field {
+        margin-bottom: 20px;
+    }
+}

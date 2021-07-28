@@ -1,0 +1,18 @@
+.image {
+	line-height: 0;
+	display: inline-block;
+	overflow: hidden;
+	border: none;
+	img {
+		max-width: 100%;
+		min-height: 100%;
+	}
+	&.fl {
+		float: left;
+		margin: 0 30px 0 0;
+	}
+	&.fr {
+		float: right;
+		margin: 0 0 0 30px;
+	}
+}

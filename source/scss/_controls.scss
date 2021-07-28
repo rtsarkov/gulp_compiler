@@ -1,0 +1,357 @@
+::-webkit-input-placeholder {
+    color: $fg--placeholder;
+}
+
+::-moz-placeholder {
+    color: $fg--placeholder;
+}
+
+:-moz-placeholder {
+    color: $fg--placeholder;
+}
+
+:-ms-input-placeholder {
+    color: $fg--placeholder;
+}
+
+// type="date"
+::-webkit-datetime-edit {}
+
+::-webkit-datetime-edit-fields-wrapper {}
+
+::-webkit-datetime-edit-text {}
+
+::-webkit-datetime-edit-month-field {}
+
+::-webkit-datetime-edit-day-field {}
+
+::-webkit-datetime-edit-year-field {}
+
+::-webkit-inner-spin-button {
+    display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+::-webkit-inner-cancel-button {
+    display: none;
+}
+
+::-webkit-clear-button {
+    display: none;
+}
+
+// type="search"
+::-webkit-search-cancel-button {
+    display: none;
+}
+
+// ios play video button
+*::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+*::--webkit-media-controls-play-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+*::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+// buttons
+.btn,
+button,
+[type='submit'],
+[type='reset'] {
+    font: inherit;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all $transition-params;
+    text-align: center;
+    text-decoration: none;
+    color: $fg;
+    border: 1px solid $fg;
+    border-radius: 0;
+    background: $bg;
+
+    &:focus {
+        border-color: $fg;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: lighten($fg, 50);
+        border-color: lighten($fg, 50);
+        background: lighten($bg, 50);
+    }
+
+    &:active {
+        border-color: darken($fg, 5);
+        background: darken($bg, 5);
+    }
+
+    &.is-loading {
+        position: relative;
+        cursor: default;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: $bg url(images/loading.svg) 50% / 50px auto no-repeat;
+        }
+    }
+}
+
+// label
+label {
+    display: block;
+    margin: 0;
+    margin-bottom: 5px;
+
+    &.require:after {
+        content: ' *';
+        font-weight: 700;
+        color: $fg--bad;
+    }
+
+    &.is-error {
+        color: $fg--bad;
+    }
+}
+
+$baseHeight: 40px;
+
+%common {
+    font: inherit;
+    line-height: 1;
+    display: block;
+    width: 100%;
+    height: $baseHeight;
+    margin: 0;
+    padding: 10px 20px;
+    transition: all $transition-params;
+    color: $fg;
+    border: 1px solid $fg;
+    border-radius: 0;
+    background: $bg;
+
+    &.is-error {
+        border-color: $fg--bad;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: lighten($fg, 50);
+    }
+}
+
+// text fields
+input {
+    @extend %common;
+}
+
+textarea {
+    @extend %common;
+    height: auto;
+    resize: none;
+}
+
+// select
+select {
+    @extend %common;
+}
+
+.jq-selectbox {
+    display: block;
+    width: 100%;
+
+    &.is-error {
+        border-color: $fg--bad;
+    }
+
+    &:hover,
+    &.focused {
+        border-color: lighten($fg, 50);
+    }
+
+    &__select {
+        line-height: 1;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        height: $baseHeight;
+        cursor: pointer;
+        border: 1px solid $fg;
+        background: $bg;
+        align-items: stretch;
+        justify-content: space-between;
+    }
+
+    &__select-text {
+        padding: 12px 20px;
+        flex-grow: 1;
+    }
+
+    &__trigger {
+        display: flex;
+        width: 40px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    &__trigger-arrow {
+        .icon {
+            transition: transform $transition-params;
+            transform: rotate(90deg);
+            fill: $fg;
+
+            .jq-selectbox.opened & {
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    &__dropdown {
+        min-width: 100%;
+        border: 1px solid $fg;
+        background: $bg;
+
+        .jq-selectbox.dropdown & {
+            margin-top: -1px;
+        }
+
+        .jq-selectbox.dropup & {
+            margin-bottom: -1px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            margin: 0;
+            padding: 10px 20px;
+            cursor: pointer;
+            white-space: normal !important;
+
+            &:hover {
+                background: #eee;
+            }
+
+            &.sel {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+// checkbox, radio
+[type='radio'],
+[type='checkbox'] {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+    &.is-error {
+        box-shadow: 0 0 0 1px $fg--bad;
+    }
+}
+
+.jq-checkbox,
+.jq-radio {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all $transition-params;
+    vertical-align: text-bottom;
+    border: 1px solid $fg;
+    background: $bg;
+    justify-content: center;
+    align-items: center;
+    fill: $fg;
+
+    &.is-error {
+        border-color: $fg--bad;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: lighten($fg, 50);
+    }
+
+    &__div {
+        line-height: 0;
+        transition: opacity $transition-params;
+        opacity: 0;
+
+        .checked & {
+            opacity: 1;
+        }
+    }
+}
+
+.jq-radio {
+    border-radius: 50%;
+
+    &__div {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: $fg;
+    }
+}
+
+// file
+.jq-file {
+    display: flex;
+    width: 100%;
+    height: $baseHeight;
+    cursor: pointer;
+    transition: all $transition-params;
+    color: $fg;
+    border: 1px solid $fg;
+    background: $bg;
+    justify-content: flex-start;
+    align-items: center;
+
+    &.is-error {
+        border-color: $fg--bad;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: lighten($fg, 50);
+    }
+
+    &__name {
+        line-height: 1;
+        padding: 10px 20px;
+        flex-grow: 1;
+    }
+
+    &__browse {
+        padding: 10px 20px;
+        flex-shrink: 0;
+    }
+}

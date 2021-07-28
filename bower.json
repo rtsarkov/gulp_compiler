@@ -1,0 +1,19 @@
+{
+  "name": "habr",
+  "version": "0.0.0",
+  "authors": [
+    "Insayt <insait.rostov@ya.ru>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "jquery": "2.*"
+  }
+}
