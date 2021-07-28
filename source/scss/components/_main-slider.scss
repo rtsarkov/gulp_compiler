@@ -1,0 +1,10 @@
+.main-slider {
+    border-radius: 7px;
+    overflow: hidden;
+    &__item {
+        img {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}

@@ -12,8 +12,11 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "normalize.css": "*",
-    "jquery": "2.*"
+  "dependencies": {    
+    "jquery": "latest",
+    "fancybox": "latest",
+    "colorbox": "latest",
+    "slick-carousel": "latest",
+    "bootstrap": "4.*"
   }
 }

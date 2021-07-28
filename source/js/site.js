@@ -112,6 +112,87 @@ jQuery(document).ready(function ($) {
 			}
 		}]
 	});
+    $('.top-header__city').colorbox({
+        href: '/.ajax/view/header_regions.php',
+        transition: "fade",
+        maxWidth: '100%',
+        maxHeight: '100%',
+        opacity: false,
+        data: {
+            currentRegion: $(this).data('current-city')
+        }
+    });
+
+    $('.modal-auth').colorbox({
+        inline:true,
+        maxWidth: '100%',
+        maxHeight: '100%',
+        opacity: false
+    });
+
+    // всплывающие формы
+    $('[data-popup-form]').click(function (e) {
+        e.preventDefault();
+        var form = $(this).data('popup-form');
+        $.colorbox({
+            href: form,
+            className: 'colorbox-form',
+            maxWidth: '100%',
+            maxHeight: '100%',
+            opacity: false,
+        });
+    });
+
+    $(document).bind('cbox_complete', function () {
+        $("#cboxClose").html('<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBkPSJNMTksNi40MUwxNy41OSw1TDEyLDEwLjU5TDYuNDEsNUw1LDYuNDFMMTAuNTksMTJMNSwxNy41OUw2LjQxLDE5TDEyLDEzLjQxTDE3LjU5LDE5TDE5LDE3LjU5TDEzLjQxLDEyTDE5LDYuNDFaIi8+Cjwvc3ZnPgo=" class="transparent" style="fill: black;"></img>');
+    });
+    $('.main-slider').slick({
+        infinite: true,
+        dots: false,
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow: '<div class="prev"><svg width="32" height="32" viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg" class="ui-icon ">\n' +
+            '<path d="M8.60001 16.6L13.2 12L8.60001 7.4L10 6L16 12L10 18L8.60001 16.6Z" fill="#757575"></path>\n' +
+            '</svg></div>',
+        nextArrow: '<div class="next"><svg><use xlink:href="../images/icons/spritemap.svg#slider-arrow"></use></svg></div>'
+    });
+
+
+    $('[data-mega-menu-open]').click(function () {
+        $('.middle-header__icon').toggleClass('open');
+        $('.mega-menu').toggleClass('open');
+    });
+
+    $('[data-counter-minus]').click(function () {
+        var $counter = $('.' + $(this).data('counter-minus'));
+        var min = parseInt($counter.attr('min'));
+        var newValue = parseInt($counter.val()) - 1;
+        if (newValue < min) {
+            $counter.val($counter.val());
+        } else {
+            $counter.val(newValue);
+        }
+    });
+
+    $('[data-counter-plus]').click(function () {
+        var $counter = $('.' + $(this).data('counter-plus'));
+        var max = parseInt($counter.attr('max'));
+        var newValue = parseInt($counter.val()) + 1;
+        if (newValue > max) {
+            $counter.val($counter.val());
+        } else {
+            $counter.val(newValue);
+        }
+    });
+
+    $('.catalog-element-tabs__item[data-tab]').click(function () {
+        let id = $(this).data('tab');
+        $('.catalog-element-tabs__item[data-tab]').removeClass('active');
+        $('.catalog-element-tabs__data[data-tab-id]').removeClass('active');
+        $(this).addClass('active');
+        $('.catalog-element-tabs__data[data-tab-id=' + id + ']').addClass('active');
+    });
 });
 
 /* FUNCTIONS */

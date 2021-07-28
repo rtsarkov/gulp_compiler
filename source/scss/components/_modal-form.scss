@@ -1,0 +1,25 @@
+.modal-form {
+    min-width: 400px;
+    &__header {
+        background: rgba(0,0,0,.06);
+        padding: 18px 25px;        
+        display: flex;        
+        justify-content: space-between;        
+        align-items: center;
+        font-size: 1.125rem;
+        font-weight: 500;
+    }
+    &__body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 30px 25px;
+    }
+    &__footer {
+        text-align: center;                        
+        font-size: .875rem;
+        color: rgba(0,0,0,.54);
+        padding: 19px 25px;        
+        border-top: 1px solid rgba(0,0,0,.12);
+    }
+
+}

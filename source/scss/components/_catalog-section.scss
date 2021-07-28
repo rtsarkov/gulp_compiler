@@ -1,0 +1,25 @@
+.catalog-section {
+    &__h1 {
+        font-weight: bold;
+        font-size: 1.5rem;
+        padding: 35px 0 0;
+        opacity: .87;
+    }
+
+}
+
+.catalog-section-sort {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1rem .5rem;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    &__link {
+        padding-right: 1rem;
+        margin: 0 10px;
+        color: rgba(0,0,0,.54);
+        &.active {
+            color: rgba(0,0,0,.87);
+            margin-right: 0;
+        }
+    }
+}

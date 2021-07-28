@@ -1,0 +1,56 @@
+.main-color-block {
+    padding: 20px 0;
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;        
+    }
+    &__info {
+        width: 20%;
+        padding-right: 20px;
+        &--white {
+            color: #fff;
+        }
+    }
+    &__title {
+        font-size: 24px;
+        line-height: 40px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    &__text {
+        font-size: 18px;
+    }
+
+    &__more {
+        display: inline-block;
+        margin-top: 20px;
+        border-radius: 4px;
+        border: 2px solid #000;
+        padding: 7px 18px;
+        text-align: center;
+        color: #000;
+        font-weight: bold;
+        &:hover {
+            color: #000;
+        }
+        &--white {
+            border-color: #fff;
+            color: #fff;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+
+    &__slider {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;        
+    }
+    &__card {
+        width: 25%;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+}
