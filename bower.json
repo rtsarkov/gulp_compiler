@@ -1,10 +1,10 @@
 {
-  "name": "habr",
-  "version": "0.0.0",
+  "name": "gulp-compiller",
+  "version": "1",
   "authors": [
-    "Insayt <insait.rostov@ya.ru>"
+    "rtsarkov"
   ],
-  "license": "MIT",
+  "license": "",
   "ignore": [
     "**/.*",
     "node_modules",
