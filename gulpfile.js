@@ -105,8 +105,11 @@ const watchFiles = function () {
     gulp.watch(path.src.fonts, fonts);
 }
 
-const build = gulp.series(
+exports.build = gulp.series(
+    gulp.parallel([css, js, svg, fonts])    
+);
+
+exports.default = gulp.series(
     gulp.parallel([css, js, svg, fonts]),
     watchFiles
 );
-exports.default = build;   
