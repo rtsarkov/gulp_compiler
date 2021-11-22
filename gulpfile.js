@@ -60,7 +60,7 @@ const css = () => {
 
 const js = () => {
     return gulp.src([
-        'app/libs/jquery/dist/jquery.min.js',
+        'app/js/plugins.js',
         path.src.js
     ])
     .pipe(plumber({
