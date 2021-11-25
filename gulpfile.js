@@ -38,6 +38,7 @@ const path = {
 
 const css = () => {
     return gulp.src(path.src.style)
+        .pipe(sourcemaps.init())
         .pipe(include())
         .pipe(plumber({
             errorHandler: (err) => {
@@ -47,8 +48,7 @@ const css = () => {
                 })(err);
             }
         }))
-        .pipe(scssGlob())
-        .pipe(sourcemaps.init())
+        .pipe(scssGlob())        
         .pipe(sass())
         .pipe(prefixer({
             browsers: settings.prefixer
