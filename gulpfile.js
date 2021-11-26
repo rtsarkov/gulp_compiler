@@ -1,10 +1,9 @@
 'use strict';
 
 const gulp = require('gulp'),
-    prefixer = require('gulp-autoprefixer'),
-    uglify = require('gulp-uglify'),
+    prefixer = require('gulp-autoprefixer'),    
     sass = require('gulp-sass'),
-    sourcemaps = require('gulp-sourcemaps'),
+    sourceMaps = require('gulp-sourcemaps'),
     cssmin = require('gulp-minify-css'),
     include = require('gulp-include'),
     notify = require("gulp-notify"),
@@ -12,8 +11,15 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     scssGlob = require('gulp-sass-glob'),
     babel = require('gulp-babel'),
+    gulpIf = require('gulp-if'),
+    yargs = require('yargs'),
+    hideBin = require('yargs/helpers').hideBin,
+    minify = require('gulp-minify'),
     svgSprite = require('gulp-svg-sprite');
 
+
+const argv = yargs(hideBin(process.argv)).argv;
+const mode = argv.dev == 1 ? 'development' : 'production';    
 const settings = {
     isBitrix: false,
     bitrixTemplate: 'main',
@@ -38,7 +44,7 @@ const path = {
 
 const css = () => {
     return gulp.src(path.src.style)
-        .pipe(sourcemaps.init())
+        .pipe(sourceMaps.init())
         .pipe(include())
         .pipe(plumber({
             errorHandler: (err) => {
@@ -53,8 +59,8 @@ const css = () => {
         .pipe(prefixer({
             browsers: settings.prefixer
         }))
-        .pipe(cssmin())
-        .pipe(sourcemaps.write())
+        .pipe(gulpIf(mode == 'production', cssmin()))
+        .pipe(gulpIf(mode == 'development', sourceMaps.write()))
         .pipe(gulp.dest(path.build.css))
 };
 
@@ -63,6 +69,7 @@ const js = () => {
         'app/js/plugins.js',
         path.src.js
     ])
+    .pipe(sourceMaps.init())
     .pipe(plumber({
         errorHandler: (err) => {
         notify.onError({
@@ -75,17 +82,27 @@ const js = () => {
     .pipe(babel({
         presets: ['@babel/preset-env']
     }))
-    .pipe(concat('main.js'))
-    .pipe(sourcemaps.init())
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(concat('main.js'))    
+    .pipe(minify({
+        ext: {
+            src: '.js',
+            min: '.min.js'
+        }
+    }))
+    .pipe(gulpIf(mode == 'development', sourceMaps.write()))
     .pipe(gulp.dest(path.build.js))
 }
 const svg = () => {
     return gulp.src(path.src.svg)
         .pipe(svgSprite({
+            svg: {
+                xmlDeclaration: false,
+                doctypeDeclaration: false,
+                namespaceIDs: false,
+                dimensionAttributes: false 
+            },
             mode: {
-                stack: {
+                symbol: {
                     sprite: "../sprite.svg"
                 }
             },

@@ -1,17 +1,23 @@
-Для запуска в текущей директории выполнить команду `npm i`
+Для установки зависимосте в текущей директории выполнить команду `npm i`
 
 Затем выполнить установку библиотек `bower i` на серевер возможно понадобиться выполнить `sudo bower i --allow-root`
 
-Для запуска использовать команду `gulp` (включает в себя build и watch) или  `gulp build` (только buil)
+Для запуска есть две команды
 
-Вывод файлов настраивается в файле gulpfile.js `out_path` 
+`npm run prod` для prodaction не составляет карту стилей и скриптов, минимизирует файл css
 
-Подключить svg sprite можно следующим образом
+`npm run dev` для разработки, включает карты стилей и скритов, не минимизирует файл css, карта js будет доступна только при подключении main.js
 
-`<img src="/www/images/svg/sprite.svg#shopping-cart">`
+Директория куда собираются файлы настраивается в gulpfile.js `settings.out_path` относительно файла gulpfile.js
 
-или
+Шрифты лежат в директории fonts, подключаются в файле scss/_fonts.scss путь указывается относительно собранного файла
 
-`<svg class="img">
-    <use xlink:href="/www/images/svg/sprite.svg#shopping-cart "></use>
+Svg иконки храняться в дректории svg. Подключить иконку svg из sprite можно следующим образом, где `shopping-cart` имя файла из 
+директории svg
+
+`<svg>
+    <use xlink:href="/www/images/svg/sprite.svg#shopping-cart"></use>
 </svg>`
+
+Если подключить файл спрайта в php `<? include($_SERVER['DOCUMENT_ROOT'] . '/images/svg/sprite.svg'); ?>`, 
+то путь до svg файла можно не писать, достаточно только #shopping-cart
