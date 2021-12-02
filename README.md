@@ -19,5 +19,5 @@ Svg иконки храняться в дректории svg. Подключи�
     <use xlink:href="/www/images/svg/sprite.svg#shopping-cart"></use>
 </svg>`
 
-Если подключить файл спрайта в php `<? include($_SERVER['DOCUMENT_ROOT'] . '/images/svg/sprite.svg'); ?>`, 
+Если подключить файл спрайта в php `<div style="display:none;"><? include($_SERVER['DOCUMENT_ROOT'] . '/images/svg/sprite.svg'); ?></div>`, 
 то путь до svg файла можно не писать, достаточно только #shopping-cart
