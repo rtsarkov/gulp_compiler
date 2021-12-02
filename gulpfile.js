@@ -95,19 +95,19 @@ const js = () => {
 const svg = () => {
     return gulp.src(path.src.svg)
         .pipe(svgSprite({
-            svg: {
-                xmlDeclaration: false,
-                doctypeDeclaration: false,
-                namespaceIDs: false,
-                dimensionAttributes: false 
-            },
-            mode: {
-                symbol: {
-                    sprite: "../sprite.svg"
-                }
-            },
-        }
-    ))
+                svg: {
+                    xmlDeclaration: false,
+                    doctypeDeclaration: false,
+                    namespaceIDs: false,
+                    dimensionAttributes: false
+                },
+                mode: {
+                    stack: {
+                        sprite: "../sprite.svg"
+                    }
+                },
+            }
+        ))
     .pipe(gulp.dest(path.build.svg));
 }
 const fonts = () => {
